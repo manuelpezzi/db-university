@@ -46,11 +46,10 @@ ORDER BY degrees.name, courses.name, teachers.surname;
  6. Selezionare tutti i docenti che insegnano nel Dipartimento di
  Matematica (54)
 
-SELECT teachers.name AS nome_docente,teachers.surname AS cognome_docente
+SELECT distinct teachers.name  AS nome_docente,teachers.surname AS cognome_docente
 FROM teachers
 JOIN course_teacher ON teachers.id = course_teacher.teacher_id
 JOIN courses ON course_teacher.course_id = courses.id
 JOIN degrees ON courses.degree_id = degrees.id
 JOIN departments ON degrees.department_id = departments.id
-WHERE departments.name = 'Dipartimento di Matematica'
-ORDER BY teachers.surname, teachers.name;
+WHERE departments.name = 'Dipartimento di Matematica';
